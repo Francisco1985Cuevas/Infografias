@@ -1,0 +1,61 @@
+PSEINT PSEUDOCODIGO
+
+Realizar el Pseudocódigo y Diagrama de flujo y su respectiva codificación en lenguaje C++, que permita calcular el costo de agua potable (recibo de agua) de un medidor. Sabiendo que:
+– Hasta los 500 cm^3 se paga $5,45
+– Hasta los 750 cm^3 se paga $7,49
+– Por encima de los 750 se paga $10,30
+Se debe ingresar por teclado el número de cm^3 consumidos y mostrar por pantalla el valor a pagar.
+
+SOLUCIÓN
+Algoritmo pago_agua
+Definir cm3,precio Como Real
+Escribir 'Centímetros cúbicos: ' Sin Saltar
+Leer cm3
+Si cm3<=0 Entonces
+Escribir 'La cantidad tiene que ser mayor que cero'
+SiNo
+Si cm3>=1 Y cm3<=500 Entonces
+precio <- 5.45
+SiNo
+Si cm3>=501 Y cm3<=750 Entonces
+precio <- 7.49
+SiNo
+Si cm3>=750 Entonces
+precio <- 10.3
+FinSi
+FinSi
+FinSi
+Escribir cm3,' centímetros cúbicos x $',precio,' = $',cm3*precio
+FinSi
+FinAlgoritmo
+CODIGO EN C++
+using namespace std;
+#include <iostream>
+int main() {
+float cm3, precio;
+cout<<"CENTIMETROS CUBICOS: ";
+cin>>cm3;
+if (cm3<=0) {
+printf("La cantidad tiene que ser mayor que cero");
+}
+else {
+if (cm3>=1 && cm3<=500){
+precio=5.45;
+}
+else if (cm3>=501 && cm3<=750){
+precio=7.49;
+}
+else if (cm3>=750) {
+precio=10.3;
+}
+cout<<"\n";
+printf("%.2f", cm3);
+cout<<" CENTIMETROS CUBICOS x $";
+printf("%.2f", precio);
+cout<<" = $";
+printf("%.2f", cm3*precio);
+}
+}
+
+
+

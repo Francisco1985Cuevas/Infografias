@@ -1,0 +1,34 @@
+# **¿Qué es la inyección SQL?**
+
+La inyección de SQL (SQLi) es una debilidad de seguridad de la aplicación que permite a los atacantes controlar la base de datos de una aplicación, permitiéndoles acceder o eliminar datos, cambiar el comportamiento de una aplicación basada en datos y hacer otras cosas no deseadas, engañando a la aplicación para que envíe comandos SQL inesperados. Las inyecciones de SQL se encuentran entre las amenazas más frecuentes a la seguridad de los datos.
+
+Las debilidades de la inyección de SQL ocurren cuando una aplicación utiliza datos que no son de confianza, como datos ingresados ??en campos de formularios web, como parte de una consulta de base de datos. Cuando una aplicación no puede desinfectar adecuadamente estos datos que no son de confianza antes de agregarlos a una consulta SQL, un atacante puede incluir sus propios comandos SQL que ejecutará la base de datos. Estas vulnerabilidades de SQLi son fáciles de prevenir, sin embargo, SQLi sigue siendo un riesgo líder en las aplicaciones web y muchas organizaciones siguen siendo vulnerables a las filtraciones de datos potencialmente dañinas que resultan de la inyección de SQL.
+
+**Cómo los atacantes aprovechan las vulnerabilidades de SQLi**
+
+Los atacantes proporcionan información especialmente diseñada para engañar a una aplicación para que modifique las consultas SQL que la aplicación solicita a la base de datos que ejecute. Esto permite al atacante:
+* Controle el comportamiento de la aplicación que se basa en los datos de la base de datos, por ejemplo, engañando a una aplicación para que permita un inicio de sesión sin una contraseña válida.
+* Alterar datos en la base de datos sin autorización, por ejemplo, creando registros fraudulentos, agregando usuarios o "promocionando" usuarios a niveles de acceso más altos, o eliminando datos.
+* Acceda a los datos sin autorización, por ejemplo, engañando a la base de datos para que proporcione demasiados resultados para una consulta.
+
+**Anatomía de un ataque de inyección SQL**
+
+Un desarrollador define una consulta SQL para realizar alguna acción de base de datos necesaria para que su aplicación funcione. Esta consulta tiene un *argumento* para que solo se devuelvan los registros deseados, y un usuario puede proporcionar el valor de ese argumento (por ejemplo, a través de un campo de formulario, parámetro de URL, cookie web, etc.).
+
+Un ataque SQLi se desarrolla en dos etapas:
+1. **Investigación: el** atacante intenta enviar varios valores inesperados para el argumento, observa cómo responde la aplicación y determina un ataque a intentar.
+1. **Ataque: El** atacante proporciona un valor de entrada cuidadosamente elaborado que, cuando se utiliza como argumento para una consulta SQL, se interpretará como parte de un comando SQL en lugar de simplemente como datos; la base de datos luego ejecuta el comando SQL modificado por el atacante.
+
+Las etapas de investigación y ataque se pueden automatizar fácilmente con herramientas disponibles.
+
+**Defensa contra ataques SQLi**
+
+Hay formas sencillas de evitar la introducción de vulnerabilidades SQLi en una aplicación y de limitar el daño que pueden causar.
+
+**Descubra** las vulnerabilidades de SQLi probando sus aplicaciones de forma rutinaria tanto mediante pruebas estáticas como dinámicas .
+
+**Evite y repare** las vulnerabilidades de SQLi mediante consultas parametrizadas. Estos tipos de consultas especifican marcadores de posición para los parámetros de modo que la base de datos siempre los trate como datos en lugar de como parte de un comando SQL. Las declaraciones preparadas y los mapeadores relacionales de objetos (ORM) facilitan esto a los desarrolladores.
+
+**Remediate **SQLi vulnerabilidades en los sistemas heredados por escapar de las entradas antes de añadirlos a la consulta. Utilice esta técnica solo cuando no se disponga de declaraciones preparadas o instalaciones similares.
+
+**Mitigue** el impacto de las vulnerabilidades de SQLi imponiendo privilegios mínimos en la base de datos. Asegúrese de que cada aplicación tenga sus propias credenciales de base de datos y de que estas credenciales tengan los derechos mínimos que necesita la aplicación.
